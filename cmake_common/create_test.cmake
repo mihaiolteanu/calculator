@@ -3,6 +3,7 @@ function(create_test test_name test_src test_dep)
   add_custom_command    (OUTPUT ${test_name}_runner.c
     COMMAND
     ruby ${CMAKE_SOURCE_DIR}/vendor/Unity/auto/generate_test_runner.rb
+    ${CMAKE_SOURCE_DIR}/cmake_common/project.yml
     ${test_src_absolute} ${test_name}_runner.c
     DEPENDS ${test_src})
   add_executable        (${test_name} ${test_src} ${test_name}_runner.c)
@@ -25,7 +26,7 @@ function(create_mock mock_name header_abs_path)
     DEPENDS ${header_abs_path})
   
   add_library(${mock_name} ${header_folder}/mocks/${mock_name}.c)
-  target_include_directories(${mock_name} PRIVATE ${header_folder})
+  target_include_directories(${mock_name} PUBLIC  ${header_folder})
   target_include_directories(${mock_name} PUBLIC  ${header_folder}/mocks)
   target_link_libraries(${mock_name} unity)
   target_link_libraries(${mock_name} cmock)

@@ -4,7 +4,11 @@
   :enforce_strict_ordering: TRUE
   :plugins:
     - :ignore
+    - :ignore_arg
+    - :expect_any_args
+    - :array
     - :callback
+    - :return_thru_ptr
   :treat_as:
     uint8:    HEX8
     uint16:   HEX16
