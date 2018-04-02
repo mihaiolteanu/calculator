@@ -1,6 +1,7 @@
 build/*
 vendor/cmock/*
 vendor/Unity/*
+Testing/*
 *_Runner.c
 mock_*.c
 mock_*.h
